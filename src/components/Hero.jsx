@@ -48,53 +48,55 @@ function Hero() {
           <div className="flex flex-wrap items-center gap-3 pt-3">
             <a
               href="#projects"
-              className="px-6 py-3.5 rounded-full bg-gradient-to-r from-violet-600/90 via-purple-600/90 to-indigo-600/90 hover:from-violet-600 hover:via-purple-600 hover:to-indigo-600 text-white font-medium text-sm border border-white/30 dark:border-violet-400/30 backdrop-blur-md shadow-[0_8px_25px_rgba(139,92,246,0.35)] hover:shadow-[0_12px_32px_rgba(139,92,246,0.55)] transition-all duration-300 flex items-center gap-2 active:scale-95"
+              className="px-6 py-3.5 rounded-full bg-gradient-to-r from-violet-600/90 via-purple-600/90 to-indigo-600/90 hover:from-violet-600 hover:via-purple-600 hover:to-indigo-600 text-white font-medium text-sm border border-white/30 dark:border-violet-400/30 backdrop-blur-md shadow-[0_8px_25px_rgba(139,92,246,0.35)] hover:shadow-[0_12px_32px_rgba(139,92,246,0.55)] transition-all duration-300 flex items-center justify-center gap-2 active:scale-95"
             >
               <span>View Projects</span>
               <ArrowUpRight className="w-4 h-4" />
             </a>
 
-            <a
-              href={githubUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={`p-3.5 rounded-full border transition-all flex items-center justify-center shrink-0 shadow-2xs active:scale-95 ${darkMode
-                ? "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:text-violet-300"
-                : "bg-white/90 border-[#E6E1F5] text-[#626274] hover:bg-[#F1EDFF] hover:border-[#A78BFA] hover:text-[#7C3AED]"
-                }`}
-              title="GitHub Profile"
-              aria-label="GitHub Profile"
-            >
-              <GithubIcon className="w-5 h-5" />
-            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href={githubUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`p-3.5 rounded-full border transition-all flex items-center justify-center shrink-0 shadow-2xs active:scale-95 ${darkMode
+                  ? "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:text-violet-300"
+                  : "bg-white/90 border-[#E6E1F5] text-[#626274] hover:bg-[#F1EDFF] hover:border-[#A78BFA] hover:text-[#7C3AED]"
+                  }`}
+                title="GitHub Profile"
+                aria-label="GitHub Profile"
+              >
+                <GithubIcon className="w-5 h-5" />
+              </a>
 
-            <a
-              href={linkedinUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={`p-3.5 rounded-full border transition-all flex items-center justify-center shrink-0 shadow-2xs active:scale-95 ${darkMode
-                ? "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:text-violet-300"
-                : "bg-white/90 border-[#E6E1F5] text-[#626274] hover:bg-[#F1EDFF] hover:border-[#A78BFA] hover:text-[#7C3AED]"
-                }`}
-              title="LinkedIn Profile"
-              aria-label="LinkedIn Profile"
-            >
-              <LinkedinIcon className="w-5 h-5" />
-            </a>
+              <a
+                href={linkedinUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`p-3.5 rounded-full border transition-all flex items-center justify-center shrink-0 shadow-2xs active:scale-95 ${darkMode
+                  ? "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:text-violet-300"
+                  : "bg-white/90 border-[#E6E1F5] text-[#626274] hover:bg-[#F1EDFF] hover:border-[#A78BFA] hover:text-[#7C3AED]"
+                  }`}
+                title="LinkedIn Profile"
+                aria-label="LinkedIn Profile"
+              >
+                <LinkedinIcon className="w-5 h-5" />
+              </a>
 
-            <a
-              href={instagramUrl}
-              target="_blank"
-              rel="noreferrer"
-              className={`p-3.5 rounded-full border transition-all flex items-center justify-center shrink-0 shadow-2xs active:scale-95 ${darkMode
-                ? "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:text-violet-300"
-                : "bg-white/90 border-[#E6E1F5] text-[#626274] hover:bg-[#F1EDFF] hover:border-[#A78BFA] hover:text-[#7C3AED]"
-                }`}
-              title="Instagram Profile"
-              aria-label="Instagram Profile"
-            >
-              <InstagramIcon className="w-5 h-5" />
-            </a>
+              <a
+                href={instagramUrl}
+                target="_blank"
+                rel="noreferrer"
+                className={`p-3.5 rounded-full border transition-all flex items-center justify-center shrink-0 shadow-2xs active:scale-95 ${darkMode
+                  ? "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:text-violet-300"
+                  : "bg-white/90 border-[#E6E1F5] text-[#626274] hover:bg-[#F1EDFF] hover:border-[#A78BFA] hover:text-[#7C3AED]"
+                  }`}
+                title="Instagram Profile"
+                aria-label="Instagram Profile"
+              >
+                <InstagramIcon className="w-5 h-5" />
+              </a>
+            </div>
           </div>
         </div>
 

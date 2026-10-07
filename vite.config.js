@@ -81,8 +81,7 @@ function smtpServerPlugin() {
                 <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background-color: #0f172a; color: #f8fafc;">
                   <div style="max-width: 600px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 30px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
                     <div style="text-align: center; margin-bottom: 24px;">
-                      <h2 style="color: #a78bfa; margin: 0; font-size: 24px; font-weight: 700;">📬 New Contact Form Submission</h2>
-                      <p style="color: #94a3b8; font-size: 14px; margin-top: 4px;">Sent from your Portfolio Website via Direct SMTP</p>
+                      <h2 style="color: #a78bfa; margin: 0; font-size: 24px; font-weight: 700;">New Contact Form Submission</h2>
                     </div>
                     
                     <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;" />
