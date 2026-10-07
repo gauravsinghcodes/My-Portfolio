@@ -54,7 +54,7 @@ export default async function handler(req, res) {
       from: `"${name}" <${user}>`,
       replyTo: email,
       to: toEmail,
-      subject: subject ? `[Portfolio Contact] ${subject}` : `New Portfolio Message from ${name}`,
+      subject: subject ? `${subject}` : `New Portfolio Message from ${name}`,
       html: `<!DOCTYPE html>
 <html lang="en">
 <head>

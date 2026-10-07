@@ -78,7 +78,7 @@ function smtpServerPlugin() {
               from: `"${name}" <${user}>`,
               replyTo: email,
               to: toEmail,
-              subject: subject ? `[Portfolio Contact] ${subject}` : `New Contact Form Submission from ${name}`,
+              subject: subject ? `${subject}` : `New Contact Form Submission from ${name}`,
               html: `<!DOCTYPE html>
 <html lang="en">
 <head>
