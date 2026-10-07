@@ -11,9 +11,7 @@ import {
   Send, 
   Loader2, 
   AlertCircle, 
-  CheckCircle2, 
-  Sparkles,
-  ShieldCheck
+  CheckCircle2
 } from "lucide-react";
 import { GithubIcon, LinkedinIcon, InstagramIcon } from "./Icons";
 import { useTheme } from "../context/ThemeContext";
@@ -112,32 +110,51 @@ function Contact() {
     setServerMsg("");
     setMissingCreds(false);
 
+    let response = null;
+    let data = null;
+
+    // Attempt 1: Try relative /api/send-email (Vite dev server)
     try {
-      const response = await fetch("/api/send-email", {
+      response = await fetch("/api/send-email", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
       });
-
-      const data = await response.json();
-
-      if (response.ok && data.success) {
-        setStatus("success");
-        setServerMsg("Your message has been successfully sent to " + emailAddress + "!");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setStatus("error");
-        setServerMsg(data.error || "Failed to send email. Please check server logs.");
-        if (data.missingCredentials) {
-          setMissingCreds(true);
-        }
+      if (response.ok || response.status < 500) {
+        data = await response.json();
       }
     } catch (err) {
-      console.error("Submission Error:", err);
+      console.warn("Relative /api/send-email failed, checking http://localhost:5000/api/send-email...", err);
+    }
+
+    // Attempt 2: Try standalone Express server on http://localhost:5000/api/send-email
+    if (!data) {
+      try {
+        response = await fetch("http://localhost:5000/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData)
+        });
+        data = await response.json();
+      } catch (err) {
+        console.warn("Express server on http://localhost:5000 also unreachable.", err);
+      }
+    }
+
+    if (response && response.ok && data && data.success) {
+      setStatus("success");
+      setServerMsg("Your message has been successfully sent to " + emailAddress + "!");
+      setFormData({ name: "", email: "", subject: "", message: "" });
+    } else if (data && data.error) {
       setStatus("error");
-      setServerMsg("Network error connecting to SMTP server. Ensure the server is running.");
+      setServerMsg(data.error);
+      if (data.missingCredentials) {
+        setMissingCreds(true);
+      }
+    } else {
+      setStatus("error");
+      setServerMsg("Unable to connect to SMTP mail server. Please ensure the dev server (npm run dev) or backend server (npm run server) is running.");
+      setMissingCreds(true);
     }
   };
 
