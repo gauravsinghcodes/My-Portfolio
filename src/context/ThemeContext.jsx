@@ -8,7 +8,7 @@ export function ThemeProvider({ children }) {
     if (savedTheme) {
       return savedTheme === "dark";
     }
-    return false;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
   });
 
   useEffect(() => {
