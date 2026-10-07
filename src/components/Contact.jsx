@@ -113,9 +113,11 @@ function Contact() {
     let response = null;
     let data = null;
 
-    // Attempt 1: Try relative /api/send-email (Vite dev server)
+    const primaryEndpoint = import.meta.env.VITE_API_URL || "/api/send-email";
+
+    // Attempt 1: Try configured VITE_API_URL or relative /api/send-email (Vercel Serverless / Vite Dev)
     try {
-      response = await fetch("/api/send-email", {
+      response = await fetch(primaryEndpoint, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData)
@@ -124,11 +126,11 @@ function Contact() {
         data = await response.json();
       }
     } catch (err) {
-      console.warn("Relative /api/send-email failed, checking http://localhost:5000/api/send-email...", err);
+      console.warn(`Primary email endpoint (${primaryEndpoint}) unreachable:`, err);
     }
 
-    // Attempt 2: Try standalone Express server on http://localhost:5000/api/send-email
-    if (!data) {
+    // Attempt 2: Try standalone Express server on http://localhost:5000/api/send-email (Local dev fallback)
+    if (!data && (import.meta.env.DEV || !import.meta.env.VITE_API_URL)) {
       try {
         response = await fetch("http://localhost:5000/api/send-email", {
           method: "POST",
@@ -153,7 +155,7 @@ function Contact() {
       }
     } else {
       setStatus("error");
-      setServerMsg("Unable to connect to SMTP mail server. Please ensure the dev server (npm run dev) or backend server (npm run server) is running.");
+      setServerMsg("Unable to connect to SMTP mail server. If deployed, make sure environment variables (SMTP_USER, SMTP_PASS) are set in your platform dashboard, or set VITE_API_URL to your backend API.");
       setMissingCreds(true);
     }
   };
