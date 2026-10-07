@@ -1,5 +1,5 @@
 import { ArrowUp } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "./Icons";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "./Icons";
 import { useTheme } from "../context/ThemeContext";
 
 function Footer() {
@@ -14,9 +14,8 @@ function Footer() {
       }`}>
       <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
 
-        {/* Copyright & Logo */}
+        {/* Copyright */}
         <div className="flex items-center gap-3">
-          <img src="/GS-logo.svg" alt="GS Logo" className="h-7 w-auto object-contain" />
           <p className={`font-medium ${darkMode ? "text-slate-400" : "text-[#626274]"}`}>
             © {new Date().getFullYear()} Gaurav Singh. All rights reserved.
           </p>
@@ -44,6 +43,17 @@ function Footer() {
           >
             <LinkedinIcon className={`w-4 h-4 ${darkMode ? "text-slate-300" : "text-[#626274]"}`} />
             <span>LinkedIn</span>
+          </a>
+
+          <a
+            href="https://www.instagram.com/gaurav_singh_1615/"
+            target="_blank"
+            rel="noreferrer"
+            className={`transition-colors flex items-center gap-1.5 text-xs font-semibold ${darkMode ? "text-slate-300 hover:text-violet-400" : "text-[#626274] hover:text-[#7C3AED]"
+              }`}
+          >
+            <InstagramIcon className={`w-4 h-4 ${darkMode ? "text-slate-300" : "text-[#626274]"}`} />
+            <span>Instagram</span>
           </a>
 
           {/* Circular Arrow-Only Back to Top Button */}

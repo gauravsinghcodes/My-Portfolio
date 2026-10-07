@@ -23,11 +23,6 @@ function Navbar() {
 
         {/* Website Logo & Brand Name */}
         <a href="#home" className="flex items-center gap-2.5 group">
-          <img
-            src="/GS-logo.svg"
-            alt="GS Logo"
-            className="h-9 w-auto object-contain group-hover:scale-105 transition-transform"
-          />
           <span className={`text-base font-extrabold tracking-tight transition-colors ${darkMode ? "text-white group-hover:text-[#A78BFA]" : "text-[#171721] group-hover:text-[#7C3AED]"
             }`}>
             Gaurav Singh

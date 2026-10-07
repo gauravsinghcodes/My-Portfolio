@@ -1,5 +1,5 @@
 import profileImage from "../assets/gaurav.jpg";
-import { GithubIcon, LinkedinIcon } from "./Icons";
+import { GithubIcon, LinkedinIcon, InstagramIcon } from "./Icons";
 import { ArrowUpRight } from "lucide-react";
 import { useTheme } from "../context/ThemeContext";
 
@@ -7,6 +7,7 @@ function Hero() {
   const { darkMode } = useTheme();
   const linkedinUrl = "https://www.linkedin.com/in/gaurav-singh-b3b3b7324/";
   const githubUrl = "https://github.com/gauravsinghcodes";
+  const instagramUrl = "https://www.instagram.com/gaurav_singh_1615/";
 
   return (
     <section id="home" className={`min-h-[calc(100vh-4rem)] flex items-center py-12 md:py-16 px-6 border-b transition-colors duration-300 ${darkMode ? "border-slate-800/80" : "border-[#E6E1F5]"
@@ -79,6 +80,20 @@ function Hero() {
               aria-label="LinkedIn Profile"
             >
               <LinkedinIcon className="w-5 h-5" />
+            </a>
+
+            <a
+              href={instagramUrl}
+              target="_blank"
+              rel="noreferrer"
+              className={`p-3.5 rounded-full border transition-all flex items-center justify-center shrink-0 shadow-2xs active:scale-95 ${darkMode
+                ? "bg-slate-800/80 border-slate-700 text-slate-200 hover:bg-slate-700 hover:text-violet-300"
+                : "bg-white/90 border-[#E6E1F5] text-[#626274] hover:bg-[#F1EDFF] hover:border-[#A78BFA] hover:text-[#7C3AED]"
+                }`}
+              title="Instagram Profile"
+              aria-label="Instagram Profile"
+            >
+              <InstagramIcon className="w-5 h-5" />
             </a>
           </div>
         </div>
