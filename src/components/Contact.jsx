@@ -303,19 +303,20 @@ function Contact() {
               )}
 
               {status === "error" && (
-                <div className="mb-6 p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-600 dark:text-rose-400 flex items-start gap-3 text-xs leading-relaxed">
-                  <AlertCircle className="w-5 h-5 text-rose-500 shrink-0 mt-0.5" />
-                  <div className="flex-1">
-                    <p className="font-bold text-sm">SMTP Dispatch Alert</p>
-                    <p className="mt-0.5">{serverMsg}</p>
+                <div className="mb-6 p-4 sm:p-5 rounded-2xl bg-rose-500/10 dark:bg-rose-950/40 border border-rose-500/30 text-rose-700 dark:text-rose-200 flex items-start gap-3.5 text-xs leading-relaxed transition-all">
+                  <AlertCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 shrink-0 mt-0.5" />
+                  <div className="flex-1 min-w-0">
+                    <p className="font-bold text-sm text-rose-900 dark:text-rose-100">Delivery Status Alert</p>
+                    <p className="mt-1 text-xs leading-relaxed text-rose-700 dark:text-rose-300">{serverMsg}</p>
                     {missingCreds && (
-                      <div className="mt-2 p-2.5 rounded-xl bg-slate-900/40 border border-slate-700/50 text-[11px] text-slate-300 font-mono">
-
+                      <div className="mt-3">
                         <a 
                           href={`mailto:${emailAddress}?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(formData.message)}`}
-                          className="block mt-1.5 font-sans font-semibold text-violet-400 underline"
+                          className="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-violet-600 hover:bg-violet-500 text-white font-semibold text-xs transition-all shadow-sm hover:shadow-md active:scale-95"
                         >
-                          Click here to send directly via email client instead &rarr;
+                          <Mail className="w-3.5 h-3.5" />
+                          <span>Send directly via Email Client</span>
+                          <span className="font-bold">&rarr;</span>
                         </a>
                       </div>
                     )}

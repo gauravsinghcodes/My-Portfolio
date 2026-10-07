@@ -42,49 +42,115 @@ app.post('/api/send-email', async (req, res) => {
       },
     });
 
+    const replySubject = encodeURIComponent(subject ? `Re: ${subject}` : 'Re: Portfolio Inquiry');
+
     const mailOptions = {
       from: `"${name}" <${user}>`,
       replyTo: email,
       to: toEmail,
       subject: subject ? `[Portfolio Contact] ${subject}` : `New Portfolio Message from ${name}`,
-      html: `
-        <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; padding: 30px; background-color: #0f172a; color: #f8fafc;">
-          <div style="max-width: 600px; margin: 0 auto; background: #1e293b; border-radius: 16px; padding: 30px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.5);">
-            <div style="text-align: center; margin-bottom: 24px;">
-              <h2 style="color: #a78bfa; margin: 0; font-size: 24px; font-weight: 700;">New Contact Form Submission</h2>
-            </div>
-            
-            <hr style="border: 0; border-top: 1px solid #334155; margin: 20px 0;" />
-            
-            <div style="margin-bottom: 16px;">
-              <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #a78bfa; letter-spacing: 0.05em;">Sender Name</span>
-              <p style="margin: 4px 0 0 0; font-size: 16px; font-weight: 600; color: #ffffff;">${name}</p>
-            </div>
-            
-            <div style="margin-bottom: 16px;">
-              <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #a78bfa; letter-spacing: 0.05em;">Sender Email</span>
-              <p style="margin: 4px 0 0 0; font-size: 16px; font-weight: 600; color: #38bdf8;">
-                <a href="mailto:${email}" style="color: #38bdf8; text-decoration: none;">${email}</a>
+      html: `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Portfolio Message</title>
+</head>
+<body style="margin: 0; padding: 0; background-color: #f1f5f9; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; color: #0f172a;">
+  <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f1f5f9; padding: 32px 16px;">
+    <tr>
+      <td align="center">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="max-width: 600px; background-color: #ffffff; border-radius: 16px; overflow: hidden; border: 1px solid #e2e8f0; box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);">
+          
+          <!-- Header Banner -->
+          <tr>
+            <td style="background: linear-gradient(135deg, #6d28d9 0%, #7c3aed 50%, #4f46e5 100%); padding: 32px 28px; text-align: left;">
+              <span style="display: inline-block; background-color: rgba(255, 255, 255, 0.2); padding: 4px 12px; border-radius: 20px; font-size: 11px; font-weight: 700; color: #ffffff; text-transform: uppercase; letter-spacing: 0.08em;">
+                Portfolio Inquiry
+              </span>
+              <h1 style="margin: 12px 0 0 0; color: #ffffff; font-size: 22px; font-weight: 800; line-height: 1.25; letter-spacing: -0.02em;">
+                New Message from ${name}
+              </h1>
+            </td>
+          </tr>
+
+          <!-- Body -->
+          <tr>
+            <td style="padding: 28px 24px;">
+              
+              <!-- Sender Information Card -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0" style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; margin-bottom: 24px; border-collapse: separate;">
+                <tr>
+                  <td style="padding: 14px 16px; border-bottom: 1px solid #e2e8f0; width: 50%;">
+                    <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.06em; display: block; margin-bottom: 4px;">
+                      Sender Name
+                    </span>
+                    <strong style="font-size: 15px; color: #0f172a; font-weight: 600; display: block;">
+                      ${name}
+                    </strong>
+                  </td>
+                  <td style="padding: 14px 16px; border-bottom: 1px solid #e2e8f0; width: 50%;">
+                    <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.06em; display: block; margin-bottom: 4px;">
+                      Sender Email
+                    </span>
+                    <a href="mailto:${email}" style="font-size: 14px; color: #6d28d9; font-weight: 600; text-decoration: none; word-break: break-all;">
+                      ${email}
+                    </a>
+                  </td>
+                </tr>
+                ${subject ? `
+                <tr>
+                  <td colspan="2" style="padding: 14px 16px;">
+                    <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.06em; display: block; margin-bottom: 4px;">
+                      Subject
+                    </span>
+                    <strong style="font-size: 15px; color: #0f172a; font-weight: 600; display: block;">
+                      ${subject}
+                    </strong>
+                  </td>
+                </tr>
+                ` : ''}
+              </table>
+
+              <!-- Message Details Header -->
+              <div style="margin-bottom: 8px; padding-left: 2px;">
+                <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.06em;">
+                  Message Details
+                </span>
+              </div>
+
+              <!-- Message Text Box -->
+              <div style="background-color: #ffffff; border: 1px solid #cbd5e1; border-left: 4px solid #7c3aed; border-radius: 8px; padding: 20px; font-size: 15px; line-height: 1.65; color: #334155; white-space: pre-wrap; word-break: break-word; margin-bottom: 28px;">${message}</div>
+
+              <!-- Reply Action CTA -->
+              <table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+                <tr>
+                  <td align="center">
+                    <a href="mailto:${email}?subject=${replySubject}" style="display: inline-block; background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 100%); color: #ffffff; font-size: 14px; font-weight: 700; text-decoration: none; padding: 14px 32px; border-radius: 10px; box-shadow: 0 4px 14px rgba(109, 40, 217, 0.35);">
+                      Reply Direct to ${name} &rarr;
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+
+          <!-- Footer -->
+          <tr>
+            <td style="background-color: #f8fafc; border-top: 1px solid #e2e8f0; padding: 18px 24px; text-align: center;">
+              <p style="margin: 0; font-size: 12px; color: #64748b; line-height: 1.5;">
+                Portfolio Direct Mailer • Received message for <strong>${toEmail}</strong>
               </p>
-            </div>
-            
-            ${subject ? `
-            <div style="margin-bottom: 16px;">
-              <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #a78bfa; letter-spacing: 0.05em;">Subject</span>
-              <p style="margin: 4px 0 0 0; font-size: 16px; font-weight: 600; color: #ffffff;">${subject}</p>
-            </div>
-            ` : ''}
-            
-            <div style="margin-top: 24px;">
-              <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #a78bfa; letter-spacing: 0.05em;">Message</span>
-              <div style="margin-top: 8px; padding: 18px; background: #0f172a; border-left: 4px solid #8b5cf6; border-radius: 8px; color: #e2e8f0; font-size: 15px; line-height: 1.6; white-space: pre-wrap;">${message}</div>
-            </div>
-            
-            <hr style="border: 0; border-top: 1px solid #334155; margin: 28px 0 16px 0;" />
-            <p style="font-size: 12px; color: #64748b; text-align: center; margin: 0;">Portfolio Direct SMTP Mailer • Delivered to ${toEmail}</p>
-          </div>
-        </div>
-      `
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`
     };
 
     await transporter.sendMail(mailOptions);
