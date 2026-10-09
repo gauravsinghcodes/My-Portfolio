@@ -1,57 +1,57 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="gs-logo-bg" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#9333EA" />
       <stop offset="50%" stop-color="#7C3AED" />
-      <stop offset="100%" stop-color="#6366F1" />
+      <stop offset="100%" stop-color="#4F46E5" />
     </linearGradient>
 
     <!-- Border highlight -->
     <linearGradient id="gs-logo-border" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.4" />
-      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.1" />
+      <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.6" />
+      <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.15" />
     </linearGradient>
 
-    <!-- Pink Star Gradient -->
+    <!-- Star Accent Gradient -->
     <linearGradient id="gs-star-grad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FF69B4" />
-      <stop offset="100%" stop-color="#E11D48" />
+      <stop offset="100%" stop-color="#F43F5E" />
     </linearGradient>
   </defs>
 
-  <!-- Background Squircle -->
-  <rect x="6" y="6" width="108" height="108" rx="28" fill="url(#gs-logo-bg)" />
-  <rect x="6.5" y="6.5" width="107" height="107" rx="27.5" fill="none" stroke="url(#gs-logo-border)" stroke-width="1.5" />
+  <!-- Background Squircle Container (Edge to Edge for Maximum Visibility) -->
+  <rect x="0" y="0" width="512" height="512" rx="120" fill="url(#gs-logo-bg)" />
+  <rect x="6" y="6" width="500" height="500" rx="114" fill="none" stroke="url(#gs-logo-border)" stroke-width="8" />
 
-  <!-- Left Bracket '<' -->
-  <path d="M 23 60 L 31 52 M 23 60 L 31 68" 
+  <!-- Code Bracket Left '<' -->
+  <path d="M 68 256 L 118 206 M 68 256 L 118 306" 
         stroke="#FFFFFF" 
-        stroke-opacity="0.45" 
-        stroke-width="4.5" 
+        stroke-opacity="0.8" 
+        stroke-width="28" 
         stroke-linecap="round" 
         stroke-linejoin="round" 
         fill="none" />
 
-  <!-- Right Bracket '>' -->
-  <path d="M 97 60 L 89 52 M 97 60 L 89 68" 
+  <!-- Code Bracket Right '>' -->
+  <path d="M 444 256 L 394 206 M 444 256 L 394 306" 
         stroke="#FFFFFF" 
-        stroke-opacity="0.45" 
-        stroke-width="4.5" 
+        stroke-opacity="0.8" 
+        stroke-width="28" 
         stroke-linecap="round" 
         stroke-linejoin="round" 
         fill="none" />
 
-  <!-- Vector 'G' -->
-  <path d="M 56 46.5 C 53.5 42, 49.5 40, 44.5 40 C 37.5 40, 33 46, 33 57 C 33 68, 37.5 74, 44.5 74 C 51.5 74, 56 69.5, 56 62.5 V 57 H 46 V 62.5 C 46 66, 45.5 67.5, 44.5 67.5 C 39.5 67.5, 39 63.5, 39 57 C 39 50.5, 39.5 46.5, 44.5 46.5 C 48.5 46.5, 51.5 48, 53 50 L 56 46.5 Z" 
+  <!-- Monogram 'G' Vector -->
+  <path d="M 238 186 C 224 158 202 144 176 144 C 132 144 112 184 112 256 C 112 328 132 368 176 368 C 220 368 238 330 238 282 V 246 H 168 V 282 H 202 C 200 310 192 328 176 328 C 148 328 144 294 144 256 C 144 218 148 184 176 184 C 194 184 206 194 216 210 Z" 
         fill="#FFFFFF" />
 
-  <!-- Vector 'S' -->
-  <path d="M 85 46.5 C 82.5 42, 78.5 40, 73.5 40 C 66.5 40, 64 45.5, 64 51 C 64 56.5, 68 58.5, 73.5 60 C 79 61.5, 84 63.5, 84 68 C 84 73.5, 79.5 74, 73.5 74 C 67.5 74, 64.5 70, 64 65.5 L 68.5 64.5 C 69 67, 70.5 68, 73.5 68 C 77 68, 78 66.5, 78 64.5 C 78 62.5, 75 61, 70.5 59.5 C 65.5 58, 69.5 51, 69.5 50 C 69.5 47.5, 71.5 46, 73.5 46 C 76.5 46, 79.5 47.5, 81 49.5 L 85 46.5 Z" 
+  <!-- Monogram 'S' Vector -->
+  <path d="M 364 186 C 350 158 328 144 298 144 C 254 144 234 176 234 216 C 234 256 262 272 298 282 C 334 292 356 306 356 334 C 356 360 332 368 298 368 C 260 368 238 346 234 312 L 268 304 C 271 326 282 334 298 334 C 314 334 322 324 322 312 C 322 296 304 286 278 276 C 242 262 200 244 200 216 C 200 184 242 176 298 176 C 326 176 348 186 356 200 Z" 
         fill="#FFFFFF" />
 
-  <!-- 4-pointed Sparkle Star on top right of S -->
-  <path d="M 83 38 Q 83 43 88 43 Q 83 43 83 48 Q 83 43 78 43 Q 83 43 83 38 Z" 
+  <!-- 4-Pointed Sparkle Star Top Right -->
+  <path d="M 405 85 Q 405 110 430 110 Q 405 110 405 135 Q 405 110 380 110 Q 405 110 405 85 Z" 
         fill="url(#gs-star-grad)" />
-  <circle cx="83" cy="43" r="1.2" fill="#FFFFFF" opacity="0.9" />
+  <circle cx="405" cy="110" r="5" fill="#FFFFFF" opacity="0.95" />
 </svg>
